@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View,StyleSheet,FlatList, Text, ImageBackground} from "react-native"
+import {View,StyleSheet,FlatList, Text, ImageBackground, Platform} from "react-native"
 import PeopleItem from "./PeopleItem"
 import { useSelector } from 'react-redux';
 import Icon from "react-native-vector-icons/EvilIcons"
@@ -10,7 +10,7 @@ const styles=StyleSheet.create({
     container:{
         width:"100%",
         flexWrap:"wrap",
-        paddingTop:50,
+        paddingTop:Platform.OS === 'ios' ?50:0,
         
     },
     backgroundImage: {

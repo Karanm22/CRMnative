@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import {View,StyleSheet,Text, ScrollView, TouchableOpacity} from "react-native"
+import {View,StyleSheet,Text, ScrollView, TouchableOpacity, Platform} from "react-native"
 import { TextInput,Button } from 'react-native-paper';
 
 
 const styles=StyleSheet.create({
   form:{
       flex:1,
-      paddingTop:30,
+      paddingTop: Platform.OS === 'ios' ?30:0,
       paddingBottom:10,
       paddingLeft:20,
     paddingRight:20,
@@ -29,13 +29,13 @@ const styles=StyleSheet.create({
   }
 });
 
-const AddPerson = () => {
+const AddPerson = ({navigation}) => {
 
     // const [contact,setContact]=useState({
     //     firstName
     // })
     const handleOnPress=()=>{
-    
+    console.log(navigation)
     }
     return (
        <View style={styles.container}>

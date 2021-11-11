@@ -2,25 +2,25 @@ import React from 'react';
 import {
   View,
   StyleSheet,
-  FlatList,
   Image,
   Text,
   ScrollView,
   TouchableOpacity,
   ImageBackground,
+  Platform,
 } from 'react-native';
-import {IconButton, Colors} from 'react-native-paper';
+import {IconButton} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import EmailImage from '../Images/email@2x.png.png';
 import PhoneImage from '../Images/call@2x.png.png';
 import SmsImage from '../Images/sms@2x.png.png';
 import {nonePerson} from '../actions';
-import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
+import {Avatar, Card} from 'react-native-paper';
 import BackgroundImage from "../Images/background.jpg"
 
 const styles = StyleSheet.create({
   card: {
-    marginTop: 50,
+    marginTop: 60,
     paddingBottom: 20,
     marginBottom: 20,
 
@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
 
   },
   closeIcon: {
-    position: 'absolute',
-    top: 40,
-    left: 300,
-    color: 'rgba(233,166,154,0.8)',
-    backgroundColor: 'lightgrey',
-    zIndex:100
+    position:"absolute",
+    top:Platform.OS === 'ios' ? 40:0,
+    left: Platform.OS === 'ios' ? 300:350,
+    backgroundColor: 'red',
+    margin:10,
+    zIndex:1000
   },
   icon: {
     top: 0,
@@ -67,9 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  actionImage:{
-      
-  }
+
 });
 
 const PeopleDetail = () => {
@@ -80,15 +78,15 @@ const PeopleDetail = () => {
   return (
     <View>
         <ImageBackground source={BackgroundImage} style={styles.image} />
-      <ScrollView showsVerticalScrollIndicator={false} style={styles.card}>
-        <View>
         <IconButton
             icon="close"
-            color={Colors.red500}
+            color={"white"}
             size={30}
             style={styles.closeIcon}
             onPress={() => dispatch(nonePerson())}
           />
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.card}>
+        <View>
           <Card>
             <Card.Title
               title={`${people.item.firstName} ${people.item.lastName}`}
