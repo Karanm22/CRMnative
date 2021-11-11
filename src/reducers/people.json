@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "firstName": "karan",
+    "lastName": "Mishra",
+    "phone": "1231231232",
+    "company": "Arche",
+    "project": "CRM project",
+    "notes": "This is a note",
+    "email":"karanm224@gmail.com"
+  },
+  {
+    "id": 2,
+    "firstName": "Shubhang",
+    "lastName": "V",
+    "phone": "1231231232",
+    "company": "Arche",
+    "project": "CRM project",
+    "notes": "This is a note",
+    "email":"karanm224@gmail.com"
+  },
+  {
+    "id": 3,
+    "firstName": "karan",
+    "lastName": "Mishra",
+    "phone": "1231231232",
+    "company": "Arche",
+    "project": "CRM project",
+    "notes": "This is a note",
+    "email":"karanm224@gmail.com"
+  },
+  {
+    "id": 4,
+    "firstName": "Avinash",
+    "lastName": "S",
+    "phone": "1231231232",
+    "company": "Arche",
+    "project": "CRM project",
+    "notes": "This is a note",
+    "email":"karanm224@gmail.com"
+  }
+]
