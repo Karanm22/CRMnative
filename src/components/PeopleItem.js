@@ -1,28 +1,12 @@
 import React from 'react'
 import {StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
-import {getTheme}from 'react-native-material-kit'
 import * as actions from "../actions"
-import Icon from "react-native-vector-icons/EvilIcons"
+
 
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import { useDispatch } from 'react-redux'
 
-const styles=StyleSheet.create({
-   card:{
-       marginTop:20
-   },
 
-   image:{
-       height:90
-   },
-   icon:{
-       color:"white",
-       backgroundColor:"black"
-   },
-   title:{
-       width:350,
-   }
-});
 const LeftContent = props => <Avatar.Icon style={styles.icon} {...props} icon="account" /> 
 const PeopleItem = ({people}) => {
     const dispatch=useDispatch()
@@ -41,5 +25,22 @@ const PeopleItem = ({people}) => {
     
     )
 }
+
+const styles=StyleSheet.create({
+    card:{
+        marginTop:20
+    },
+ 
+    image:{
+        height:90
+    },
+    icon:{
+        color:"white",
+        backgroundColor:"black"
+    },
+    title:{
+        width:350,
+    }
+ });
 
 export default PeopleItem

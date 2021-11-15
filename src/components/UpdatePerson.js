@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import {View,StyleSheet,Text, ScrollView, TouchableOpacity, Platform} from "react-native"
 import { TextInput,Button } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
-import { createNewContact, loadInitialContacts } from '../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { createNewContact, loadInitialContacts, updateContact } from '../actions';
 
 
 const styles=StyleSheet.create({
@@ -31,29 +31,23 @@ const styles=StyleSheet.create({
   }
 });
 
-const AddPerson = ({navigation}) => {
+const UpdatePerson = ({navigation}) => {
     const dispatch = useDispatch()
-
+    const people = useSelector(state => state.personSelected);
     const [contact,setContact]=useState({
-        firstName:null,
-        lastName:null,
-        phone:null,
-        email:null,
-        company:null,
-        project:null,
-        notes:""
+        firstName:people.item.firstName,
+        lastName:people.item.lastName,
+        phone:people.item.phone + "",
+        email:people.item.email,
+        company:people.item.company,
+        project:people.item.project,
+        notes:people.item.notes,
+        _id:people.item._id
     })
-    const handleOnPress=()=>{
-        dispatch(createNewContact(contact))
+    const handleOnUpdatePress=()=>{
+        dispatch(updateContact(contact,contact._id))
         dispatch(loadInitialContacts())
         navigation.navigate("People");
-        setContact({firstName:null,
-            lastName:null,
-            phone:null,
-            email:null,
-            company:null,
-            project:null,
-            notes:null})
     }
     return (
        <View style={styles.container}>
@@ -69,7 +63,7 @@ const AddPerson = ({navigation}) => {
            <TextInput style={styles.fieldStyle} onChangeText={text =>setContact({...contact,project:text})} value={contact.project} label="Project" />
            <TextInput style={styles.fieldStyle} onChangeText={text =>setContact({...contact,notes:text})} value={contact.notes} label="Notes..." />
            <TouchableOpacity style={styles.addButton}>
-            <Button onPress={handleOnPress} mode={"contained"} color={"lightgreen"}>Submit</Button>
+            <Button onPress={handleOnUpdatePress} mode={"contained"} color={"lightgreen"}>Update</Button>
            </TouchableOpacity>
            </View>
         </ScrollView>
@@ -77,4 +71,4 @@ const AddPerson = ({navigation}) => {
     )
 }
 
-export default AddPerson
+export default UpdatePerson
